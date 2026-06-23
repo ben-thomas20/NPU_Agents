@@ -50,12 +50,28 @@ scripts/
 ## Setup
 
 1. **Install Claude Code:** `npm install -g @anthropic-ai/claude-code` (Node 20+). Set `ANTHROPIC_API_KEY` via env or `~/.claude/config.json`.
-2. **Fill secrets:** `cp .env.example .env` and add the Airtable PAT + base ID, Granola key, and Google OAuth creds. See [.env.example](.env.example) for the required Google scopes (read-only).
-3. **Verify MCP servers:** run `claude`, then `/mcp`. All four (airtable, granola, gcal, gmail) should show connected.
+2. **Fill secrets:** `cp .env.example .env` and add the Airtable PAT + base ID, Granola key, and the Google Calendar OAuth creds. Mint the Calendar refresh token with the `calendar.readonly` scope only.
+3. **Authorize Gmail (read-only):** see [Gmail setup](#gmail-setup) below. Gmail does not use `.env`.
+4. **Verify MCP servers:** run `claude`, then `/mcp`. All four (airtable, granola, gcal, gmail) should show connected.
 
-Other prerequisites: Airtable PAT with read access to the NextPlayU base (Candidates, Roles, Meetings, Outreach, Notes tables); Granola Business plan ($14/user/mo) for transcripts, Basic for enhanced notes (last 30 days only); Google Workspace OAuth for Calendar and Gmail.
+Other prerequisites: Airtable PAT with read access to the NextPlayU base (Candidates, Roles, Meetings, Outreach, Notes tables); Granola Business plan ($14/user/mo) for transcripts, Basic for enhanced notes (last 30 days only); a Google Cloud project with the Gmail and Calendar APIs enabled.
 
 > Community MCP package names drift. Verify each at setup time; if one is unmaintained, fall back to the underlying API. The official Granola MCP is the source of truth for that integration.
+
+### Gmail setup
+
+Gmail uses [`@klodr/gmail-mcp`](https://www.npmjs.com/package/@klodr/gmail-mcp), authorized read-only. Read-only is enforced twice: Google rejects writes at the API, and the server only registers tools the granted scope allows, so write tools (`send`, `delete`, `draft`) never reach the agent.
+
+1. **Google Cloud Console** ([console.cloud.google.com](https://console.cloud.google.com)): create a project, enable the **Gmail API**, and configure the **OAuth consent screen** (Internal if Jason is on a Workspace, otherwise External + add him as a Test user).
+2. **Create an OAuth client ID**, type **Desktop app**. Download the JSON and save it to `~/.gmail-mcp/gcp-oauth.keys.json`.
+3. **Run the read-only auth flow** as Jason:
+   ```bash
+   npx -y @klodr/gmail-mcp auth --scopes=gmail.readonly
+   ```
+   A browser opens. Jason logs in and approves. The consent screen should say only "Read your email" — not send or delete. The token is cached at `~/.gmail-mcp/credentials.json` (mode `0600`).
+4. Confirm at [myaccount.google.com/permissions](https://myaccount.google.com/permissions) that the app lists read access only.
+
+`.mcp.json` also sets `GMAIL_MCP_DRY_RUN=true` as defense in depth: even if a broader-scoped token is ever used by mistake, mutating calls become no-ops.
 
 ## Running it
 

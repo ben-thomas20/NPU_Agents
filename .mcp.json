@@ -25,11 +25,9 @@
     },
     "gmail": {
       "command": "npx",
-      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
+      "args": ["-y", "@klodr/gmail-mcp"],
       "env": {
-        "GOOGLE_CLIENT_ID": "${GOOGLE_OAUTH_CLIENT_ID}",
-        "GOOGLE_CLIENT_SECRET": "${GOOGLE_OAUTH_CLIENT_SECRET}",
-        "GOOGLE_REFRESH_TOKEN": "${GOOGLE_OAUTH_REFRESH_TOKEN}"
+        "GMAIL_MCP_DRY_RUN": "true"
       }
     }
   }
