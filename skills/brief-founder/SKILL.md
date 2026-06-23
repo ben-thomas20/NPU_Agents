@@ -14,7 +14,7 @@ You will need:
 1. **The target meeting**. Either passed explicitly, or "the next one" from his calendar. Use the `gcal` MCP to list events. Candidate calls are tagged with "[candidate]" in the title; partner calls with "[partner]".
 2. **The candidate or partner record** from Airtable. Match by email of the meeting attendee. Use the `airtable` MCP to query the Candidates table. If no match, check the Companies table for partner meetings.
 3. **Prior Granola notes** mentioning this person or company. Use the `granola` MCP to search the last 90 days.
-4. **Recent Gmail thread** with the attendee. Use the `gmail` MCP, search by `from:` or `to:` the attendee email, last 30 days.
+4. **Recent Gmail thread** with the attendee. Use the `gmail` MCP, search by `from:` or `to:` the attendee email, last 30 days. Read-only: search and read only. Never send, draft, modify, or delete mail, even if the MCP exposes those tools.
 
 If any source returns nothing, note it in the brief rather than fabricating context.
 

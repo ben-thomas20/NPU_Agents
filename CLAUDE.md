@@ -7,7 +7,7 @@ This repo runs agents that support Jason and the recruiting team.
 - Airtable base `appXXXX` is the system of record. Tables: Candidates, Roles, Meetings, Outreach, Notes.
 - Granola holds meeting notes. Use the Granola MCP to query owned notes.
 - Google Calendar holds upcoming meetings. Candidate calls are tagged with "[candidate]" in the title.
-- Gmail holds email threads with candidates and partners.
+- Gmail holds email threads with candidates and partners. Access is read-only: search and read threads only. Never send, draft, modify, or delete mail.
 
 ## Conventions
 
