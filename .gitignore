@@ -1,0 +1,6 @@
+.env
+.env.local
+workspaces/*/briefs/
+candidates/cache/
+node_modules/
+.DS_Store

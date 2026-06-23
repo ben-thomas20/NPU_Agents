@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "airtable": {
+      "command": "npx",
+      "args": ["-y", "airtable-mcp-server"],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_TOKEN}"
+      }
+    },
+    "granola": {
+      "command": "npx",
+      "args": ["-y", "@granola/mcp-server"],
+      "env": {
+        "GRANOLA_API_KEY": "${GRANOLA_API_KEY}"
+      }
+    },
+    "gcal": {
+      "command": "npx",
+      "args": ["-y", "@cocal/google-calendar-mcp"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${GOOGLE_OAUTH_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_OAUTH_CLIENT_SECRET}",
+        "GOOGLE_REFRESH_TOKEN": "${GOOGLE_OAUTH_REFRESH_TOKEN}"
+      }
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${GOOGLE_OAUTH_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_OAUTH_CLIENT_SECRET}",
+        "GOOGLE_REFRESH_TOKEN": "${GOOGLE_OAUTH_REFRESH_TOKEN}"
+      }
+    }
+  }
+}
