@@ -318,17 +318,6 @@ Write `scripts/schedule-briefs.py` to poll Calendar every 15 minutes, identify m
 
 This adds complexity. Do not build it until manual mode is proving its value.
 
-## Demoing to Jason tomorrow
-
-Do not show him the architecture. Show him the output.
-
-1. Pick a real upcoming candidate meeting from his calendar.
-2. Run the briefer.
-3. Hand him the brief and ask: "Would this have saved you 20 minutes of prep?"
-
-If yes, you have buy-in to wire up the rest. If the brief is wrong or thin in ways that matter, iterate on the SKILL.md prompt before adding more sources.
-
-## Roadmap
 
 ### Phase 2: post-meeting follow-up agent
 
