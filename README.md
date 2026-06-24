@@ -85,10 +85,6 @@ Claude reads `CLAUDE.md`, triggers the `brief-founder` skill, runs the workflow,
 
 For back-to-back meetings, be explicit: "brief me on the 2pm call" or "brief me on the meeting with {name}".
 
-## Demoing to Jason
-
-Show the output, not the architecture. Pick a real upcoming candidate meeting, run the briefer, hand him the brief, and ask: "Would this have saved you 20 minutes of prep?" If yes, wire up the rest. If it is thin in ways that matter, iterate on [SKILL.md](skills/brief-founder/SKILL.md) before adding sources.
-
 ## Roadmap
 
 - **Phase 2 — [draft-followup](skills/draft-followup/SKILL.md):** after a meeting, read the fresh Granola note, update Airtable status, draft a follow-up in Jason's voice, suggest the next action.
